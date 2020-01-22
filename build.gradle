@@ -35,12 +35,12 @@ configurations.all {
 
 compileKotlin {
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Versions.target_compat
     }
 }
 
 compileTestKotlin {
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Versions.target_compat
     }
 }
