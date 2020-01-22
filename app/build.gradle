@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion Versions.compile_sdk
+    buildToolsVersion Versions.build_tools
+    defaultConfig {
+        applicationId "com.sdrss.githubtrandingrepoapp"
+        minSdkVersion Versions.min_sdk
+        targetSdkVersion Versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+        animationsDisabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //Support Libraries
+    implementation Libs.androidx_support_v4
+    implementation Libs.androidx_appcompat_v7
+    implementation Libs.androidx_recyclerview
+    implementation Libs.androidx_material
+    implementation Libs.androidx_constraintlayout
+
+    //Networking
+    implementation Libs.glide
+    implementation Libs.retrofit
+    implementation Libs.okhttp
+
+    //Kotlin
+    implementation Libs.kotlin_std_lib
+    implementation Libs.kotlin_coroutines
+    implementation Libs.kotlin_coroutines_android
+
+    implementation Libs.moshi
+
+    //Logging
+    implementation Libs.timber
+
+    debugImplementation Libs.android_debug_database //Uncomment for Android Debug Database
+
+    //JVM Tests Only
+    testImplementation TestLibs.junit
+    testImplementation TestLibs.junit_ext
+
+    androidTestImplementation TestLibs.espresso_core
+    androidTestImplementation TestLibs.espresso_contrib
+    androidTestImplementation Libs.androidx_test_rules
+    androidTestImplementation TestLibs.runner
+    androidTestUtil TestLibs.orchestrator
+
+}
+
+repositories {
+    mavenCentral()
+}

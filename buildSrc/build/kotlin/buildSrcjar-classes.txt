@@ -1,0 +1,1 @@
+/Users/Apple/GithubTrandingRepoApp/buildSrc/build/classes/kotlin/main/GradlePlugins.class:/Users/Apple/GithubTrandingRepoApp/buildSrc/build/classes/kotlin/main/Libs.class:/Users/Apple/GithubTrandingRepoApp/buildSrc/build/classes/kotlin/main/TestLibs.class:/Users/Apple/GithubTrandingRepoApp/buildSrc/build/classes/kotlin/main/Versions.class
