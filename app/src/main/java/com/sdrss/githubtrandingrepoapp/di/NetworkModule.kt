@@ -61,7 +61,7 @@ val networkModule = module {
     single {
         Interceptor { chain ->
             chain.proceed(chain.request().newBuilder().apply {
-               //add common headers like auth, Api-key
+               //here we can add common headers like auth, Api-key
             }.build())
         }
     }

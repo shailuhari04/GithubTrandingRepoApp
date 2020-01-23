@@ -11,7 +11,6 @@ val viewModelModule = module {
     // Tells Koin how to create an instance of GithubTrendingRepoViewModel with apiService, repository instance
     viewModel {
         GithubTrendingRepoViewModel(
-            apiService = get(),
             repository = get()
         )
     }

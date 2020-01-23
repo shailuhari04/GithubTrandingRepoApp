@@ -1,32 +1,24 @@
 package com.sdrss.githubtrandingrepoapp.repository
 
-import com.sdrss.githubtrandingrepoapp.data.remote.api.SearchAPI
+import com.sdrss.githubtrandingrepoapp.base.BaseRepository
+import com.sdrss.githubtrandingrepoapp.data.remote.api.ApiService
 import com.sdrss.githubtrandingrepoapp.data.remote.response.RepositoriesResponse
-import retrofit2.Response
 
 interface GithubRepository {
     // Suspend is used to await the result from Deferred
-    suspend fun getRepository(): NetworkResult<List<RepositoriesResponse>>
+    suspend fun fetchData(): MutableList<RepositoriesResponse>?
 }
 
-class GithubRepositoryImpl(private val apiService: SearchAPI) : GithubRepository {
-    /*
-      We try to return a list of cats from the API
-      Await the result from web service and then return it, catching any error from API
-      */
-    override suspend fun getRepository(): NetworkResult<List<RepositoriesResponse>>  {
-        val response = apiService.searchData().await()
-        if (response.isSuccessful) {
-            val items = response.body()
-            if (items != null) {
-                return NetworkResult.Success(items)
-            }
-        }
-        return NetworkResult.Failure(response)
+class GithubRepositoryImpl(private val apiService: ApiService) : GithubRepository,
+    BaseRepository() {
+
+    //get latest news using safe api call
+    override suspend fun fetchData(): MutableList<RepositoriesResponse>? {
+        return safeApiCall(
+            //await the result of deferred type
+            call = { apiService.searchData().await() },
+            error = "Error fetching github trending repositories"
+            //convert to mutable list
+        )?.toMutableList()
     }
-}
-
-sealed class NetworkResult<out T> {
-    data class Success<T>(val body: T) : NetworkResult<T>()
-    data class Failure<T>(val errorResponse: Response<T>? = null) : NetworkResult<T>()
 }

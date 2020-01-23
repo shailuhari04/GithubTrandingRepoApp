@@ -8,7 +8,7 @@ import retrofit2.http.GET
 /**
  * @author SDRSS
  */
-interface SearchAPI {
+interface ApiService {
 
     @GET("repositories")
     fun searchData(): Deferred<Response<List<RepositoriesResponse>>>
