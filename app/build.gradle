@@ -8,12 +8,12 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
-    compileSdkVersion Versions.compile_sdk
-    buildToolsVersion Versions.build_tools
+    compileSdkVersion Versions.COMPILE_SDK
+    buildToolsVersion Versions.BUILD_TOOLS
     defaultConfig {
         applicationId "com.sdrss.githubtrandingrepoapp"
-        minSdkVersion Versions.min_sdk
-        targetSdkVersion Versions.target_sdk
+        minSdkVersion Versions.MIN_SDK
+        targetSdkVersion Versions.TARGET_SDK
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
@@ -36,38 +36,38 @@ android {
 
 dependencies {
     //Support Libraries
-    implementation Libs.androidx_support_v4
-    implementation Libs.androidx_appcompat_v7
-    implementation Libs.androidx_recyclerview
-    implementation Libs.androidx_material
-    implementation Libs.androidx_constraintlayout
+    implementation Libs.ANDROIDX_SUPPORT_V4
+    implementation Libs.ANDROIDX_APPCOMPAT_V7
+    implementation Libs.ANDROIDX_RECYCLERVIEW
+    implementation Libs.ANDROIDX_MATERIAL
+    implementation Libs.ANDROIDX_CONSTRAINTLAYOUT
 
     //Networking
-    implementation Libs.glide
-    implementation Libs.retrofit
-    implementation Libs.okhttp
+    implementation Libs.GLIDE
+    implementation Libs.RETROFIT
+    implementation Libs.OKHTTP
 
     //Kotlin
-    implementation Libs.kotlin_std_lib
-    implementation Libs.kotlin_coroutines
-    implementation Libs.kotlin_coroutines_android
+    implementation Libs.KOTLIN_STD_LIB
+    implementation Libs.KOTLIN_COROUTINES
+    implementation Libs.KOTLIN_COROUTINES_ANDROID
 
-    implementation Libs.moshi
+    implementation Libs.MOSHI
 
     //Logging
-    implementation Libs.timber
+    implementation Libs.TIMBER
 
-    debugImplementation Libs.android_debug_database //Uncomment for Android Debug Database
+    debugImplementation Libs.ANDROID_DEBUG_DATABASE //Uncomment for Android Debug Database
 
     //JVM Tests Only
-    testImplementation TestLibs.junit
-    testImplementation TestLibs.junit_ext
+    testImplementation TestLibs.JUNIT
+    testImplementation TestLibs.JUNIT_EXT
 
-    androidTestImplementation TestLibs.espresso_core
-    androidTestImplementation TestLibs.espresso_contrib
-    androidTestImplementation Libs.androidx_test_rules
-    androidTestImplementation TestLibs.runner
-    androidTestUtil TestLibs.orchestrator
+    androidTestImplementation TestLibs.ESPRESSO_CORE
+    androidTestImplementation TestLibs.ESPRESSO_CONTRIB
+    androidTestImplementation Libs.ANDROIDX_TEST_RULES
+    androidTestImplementation TestLibs.RUNNER
+    androidTestUtil TestLibs.ORCHESTRATOR
 
 }
 
