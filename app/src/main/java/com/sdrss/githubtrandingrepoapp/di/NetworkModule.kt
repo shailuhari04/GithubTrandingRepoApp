@@ -23,6 +23,8 @@ private const val BASE_URL = "https://github-trending-api.now.sh/"
 
 val networkModule = module {
 
+    // Tells Koin how to create an instance of apiService with Retrofit, OkHttpClient, Moshi, MoshiConverterFactory, CoroutineCallAdapterFactory,  instance
+
     single { Cache(androidApplication().cacheDir, 10L * 1024 * 1024) }
 
     single { Moshi.Builder().build() }
@@ -59,7 +61,7 @@ val networkModule = module {
     single {
         Interceptor { chain ->
             chain.proceed(chain.request().newBuilder().apply {
-                header("User-Key", "4feaa2167c4dc6beadf629319423bd4b")
+               //add common headers like auth, Api-key
             }.build())
         }
     }

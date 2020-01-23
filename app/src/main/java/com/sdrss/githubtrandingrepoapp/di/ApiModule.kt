@@ -8,6 +8,7 @@ import retrofit2.Retrofit
  * @author SDRSS
  */
 val apiModule = module {
+    // Tells Koin how to create an instance of SearchAPI
     single(createOnStart = false) { get<Retrofit>().create(SearchAPI::class.java) }
 }
 

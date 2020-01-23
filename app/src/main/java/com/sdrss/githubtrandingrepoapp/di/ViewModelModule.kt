@@ -8,10 +8,11 @@ import org.koin.dsl.module.module
  * @author SDRSS
  */
 val viewModelModule = module {
+    // Tells Koin how to create an instance of GithubTrendingRepoViewModel with apiService, repository instance
     viewModel {
         GithubTrendingRepoViewModel(
-            get(),
-            get()
+            apiService = get(),
+            repository = get()
         )
     }
 }
