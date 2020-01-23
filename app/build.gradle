@@ -26,6 +26,14 @@ android {
         animationsDisabled = true
     }
 
+    dataBinding {
+        enabled = true
+    }
+
+    kapt {
+        generateStubs = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -46,13 +54,25 @@ dependencies {
     implementation Libs.GLIDE
     implementation Libs.RETROFIT
     implementation Libs.OKHTTP
+    api Libs.OKHTTP_LOGGING_INTERCEPTOR
+
+    implementation Libs.MOSHI
+    implementation Libs.MOSHI_KOTLIN
+    implementation Libs.RETROFIT_MOSHI_CONVERTER
+
+    implementation Libs.RETROFIT_COROUTINES_ADAPTER
 
     //Kotlin
     implementation Libs.KOTLIN_STD_LIB
     implementation Libs.KOTLIN_COROUTINES
     implementation Libs.KOTLIN_COROUTINES_ANDROID
 
-    implementation Libs.MOSHI
+
+    //DI(KOIN)
+    implementation Libs.KOIN_CORE
+    implementation Libs.KOIN_ANDROID
+    implementation Libs.KOIN_ARCHITECTURE
+    testImplementation Libs.KOIN_TEST
 
     //Logging
     implementation Libs.TIMBER

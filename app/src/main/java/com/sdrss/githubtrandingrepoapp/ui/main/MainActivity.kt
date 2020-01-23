@@ -1,7 +1,8 @@
-package com.sdrss.githubtrandingrepoapp
+package com.sdrss.githubtrandingrepoapp.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.sdrss.githubtrandingrepoapp.R
 
 class MainActivity : AppCompatActivity() {
 

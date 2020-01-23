@@ -1,4 +1,4 @@
-package com.sdrss.githubtrandingrepoapp.models.response
+package com.sdrss.githubtrandingrepoapp.data.remote.response
 
 
 import androidx.annotation.Keep

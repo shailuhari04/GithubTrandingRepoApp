@@ -22,6 +22,9 @@ object Versions {
     const val TIMBER = "4.5.1"
     const val MOSHI = "1.6.0"
 
+    //koin(DI)
+    const val KOIN = "1.0.2"
+
     // android
     const val ANDROIDX = "1.0.0"
     const val ANDROIDX_LIFECYCLE = "2.0.0"
@@ -42,6 +45,12 @@ object Libs {
     const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
     const val RETROFIT_MOSHI_CONVERTER =
         "com.squareup.retrofit2:converter-moshi:${Versions.RETROFIT}"
+
+    //DI(Koin)
+    const val KOIN_CORE = "org.koin:koin-core:${Versions.KOIN}"
+    const val KOIN_ANDROID = "org.koin:koin-android:${Versions.KOIN}"
+    const val KOIN_ARCHITECTURE = "org.koin:koin-androidx-viewmodel:${Versions.KOIN}"
+    const val KOIN_TEST = "org.koin:koin-test:${Versions.KOIN}"
 
     //AndroidX
     const val ANDROIDX_MATERIAL = "com.google.android.material:material:${Versions.ANDROIDX}"
