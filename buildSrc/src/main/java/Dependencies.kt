@@ -25,12 +25,15 @@ object Versions {
     //koin(DI)
     const val KOIN = "1.0.2"
 
-    // android
+    // androidX
     const val ANDROIDX = "1.0.0"
+    const val MAERIAL_DESIGN = "1.2.0-alpha04"
     const val ANDROIDX_LIFECYCLE = "2.0.0"
     const val ANDROIDX_PERSISTENCE = "2.2.0-alpha01"
     const val ANDROIDX_TEST = "1.1.0"
     const val ANDROIDX_CONSTRAINTLAYOUT = "1.1.3"
+    const val ANDROIDX_VIEWMODEL_KTX = "2.1.0"
+
 
     const val ANDROID_GRADLE_PLUGIN = "3.5.3"
     const val ESPRESSO = "3.1.1"
@@ -38,6 +41,9 @@ object Versions {
 
     const val ASSERTJ = "3.11.1"
     const val ANDROID_DEBUG_DATABASE = "1.0.6"
+
+    //simmerLayout
+    const val SIMMERLAYOUT = "2.1.0"
 }
 
 object Libs {
@@ -49,11 +55,12 @@ object Libs {
     //DI(Koin)
     const val KOIN_CORE = "org.koin:koin-core:${Versions.KOIN}"
     const val KOIN_ANDROID = "org.koin:koin-android:${Versions.KOIN}"
-    const val KOIN_ARCHITECTURE = "org.koin:koin-androidx-viewmodel:${Versions.KOIN}"
+    const val KOIN_VIEWMODEL = "org.koin:koin-androidx-viewmodel:${Versions.KOIN}"
     const val KOIN_TEST = "org.koin:koin-test:${Versions.KOIN}"
+    const val KOIN_SCOPE = "org.koin:koin-android-scope:${Versions.KOIN}"
 
     //AndroidX
-    const val ANDROIDX_MATERIAL = "com.google.android.material:material:${Versions.ANDROIDX}"
+    const val ANDROIDX_MATERIAL = "com.google.android.material:material:${Versions.MAERIAL_DESIGN}"
     const val ANDROIDX_RECYCLERVIEW = "androidx.recyclerview:recyclerview:${Versions.ANDROIDX}"
     const val ANDROIDX_APPCOMPAT_V7 = "androidx.appcompat:appcompat:${Versions.ANDROIDX}"
     const val ANDROIDX_SUPPORT_V4 = "androidx.legacy:legacy-support-v4:${Versions.ANDROIDX}"
@@ -69,6 +76,15 @@ object Libs {
 
     const val ANDROIDX_LIFECYCLE_LIVEDATA_CORE =
         "androidx.lifecycle:lifecycle-livedata-core:${Versions.ANDROIDX_LIFECYCLE}"
+
+    const val ANDROIDX_LIFECYCLE_COMPILER =
+        "androidx.lifecycle:lifecycle-compiler:${Versions.ANDROIDX_LIFECYCLE}"
+
+    const val ANDROIDX_LIFECYCLE_VIEWMODEL_KTX =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.ANDROIDX_VIEWMODEL_KTX}"
+
+    const val ANDROIDX_LIFECYCLE_EXT =
+        "androidx.lifecycle:lifecycle-extensions:${Versions.ANDROIDX_VIEWMODEL_KTX}"
 
     const val ANDROIDX_PERSISTENCE_ROOM_KTX =
         "androidx.room:room-ktx:${Versions.ANDROIDX_PERSISTENCE}" // optional - Kotlin Extensions and Coroutines support for Room
@@ -106,6 +122,10 @@ object Libs {
     const val APACHE_COMMONS = "commons-io:commons-io:${Versions.APACHE_COMMONS}"
     const val ANDROID_DEBUG_DATABASE =
         "com.amitshekhar.android:debug-db:${Versions.ANDROID_DEBUG_DATABASE}"
+
+    //simmerLayout
+    const val SIMMERLAYOUT =
+        "io.supercharge:shimmerlayout:${Versions.SIMMERLAYOUT}"
 
 }
 

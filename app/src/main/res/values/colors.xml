@@ -3,4 +3,21 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="toolbarTitleColor">#25282B</color>
+    <color name="textPrimaryColor">#52575c</color>
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="dividerColor">#E8E8E8</color>
+    <color name="textSecondaryGray">#929292</color>
+    <color name="buttonFillColor">#31B057</color>
+    <color name="noInternetMessageTitleColor">#4A4A4A</color>
+    <color name="noInternetMessageDescColor">#929292</color>
+
+
+    <!-- colors for language -->
+    <color name="color_red">#dd1029</color>
+    <color name="color_blue">#54c5f8</color>
+    <color name="color_orange">#f88909</color>
+    <color name="color_yellow">#f0db4f</color>
+
 </resources>

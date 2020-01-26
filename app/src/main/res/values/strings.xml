@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">GithubTrandingRepoApp</string>
+    <string name="app_name">GithubTrendingRepoApp</string>
+
+    <!-- Toolbar -->
+    <string name="toolbar_title">Trending</string>
+
+    <!-- options -->
+    <string name="sort_by_star_text">Sort by stars</string>
+    <string name="sort_by_name_text">Sort by name</string>
+
+    <!-- no internet -->
+    <string name="no_internet_title">Something went wrong…</string>
+    <string name="no_internet_desc">An alien is probably blocking your signal.</string>
+    <string name="retry_btn_text">RETRY</string>
 </resources>

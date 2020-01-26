@@ -11,7 +11,7 @@ android {
     compileSdkVersion Versions.COMPILE_SDK
     buildToolsVersion Versions.BUILD_TOOLS
     defaultConfig {
-        applicationId "com.sdrss.githubtrandingrepoapp"
+        applicationId "com.sdrss.githubtrendingrepoapp"
         minSdkVersion Versions.MIN_SDK
         targetSdkVersion Versions.TARGET_SDK
         versionCode 1
@@ -21,17 +21,8 @@ android {
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
-    testOptions {
-        execution 'ANDROIDX_TEST_ORCHESTRATOR'
-        animationsDisabled = true
-    }
-
     dataBinding {
         enabled = true
-    }
-
-    kapt {
-        generateStubs = true
     }
 
     buildTypes {
@@ -54,7 +45,7 @@ dependencies {
     implementation Libs.GLIDE
     implementation Libs.RETROFIT
     implementation Libs.OKHTTP
-    api Libs.OKHTTP_LOGGING_INTERCEPTOR
+    implementation Libs.OKHTTP_LOGGING_INTERCEPTOR
 
     implementation Libs.MOSHI
     implementation Libs.MOSHI_KOTLIN
@@ -66,13 +57,20 @@ dependencies {
     implementation Libs.KOTLIN_STD_LIB
     implementation Libs.KOTLIN_COROUTINES
     implementation Libs.KOTLIN_COROUTINES_ANDROID
+    implementation Libs.ANDROIDX_LIFECYCLE_VIEWMODEL_KTX
+    implementation Libs.ANDROIDX_LIFECYCLE_EXT
+    annotationProcessor Libs.ANDROIDX_LIFECYCLE_COMPILER
 
 
     //DI(KOIN)
     implementation Libs.KOIN_CORE
     implementation Libs.KOIN_ANDROID
-    implementation Libs.KOIN_ARCHITECTURE
+    implementation Libs.KOIN_VIEWMODEL
+    testImplementation Libs.KOIN_SCOPE
     testImplementation Libs.KOIN_TEST
+
+    //loader
+    implementation Libs.SIMMERLAYOUT
 
     //Logging
     implementation Libs.TIMBER

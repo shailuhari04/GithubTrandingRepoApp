@@ -23,6 +23,14 @@ allprojects {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force "com.squareup.okhttp3:okhttp:${Versions.OKHTTP}"
+        force "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP}"
+        force "com.squareup.okhttp3:mockwebserver:${Versions.OKHTTP}"
+    }
+}
+
 compileKotlin {
     kotlinOptions {
         jvmTarget = Versions.TARGET_COMPAT
