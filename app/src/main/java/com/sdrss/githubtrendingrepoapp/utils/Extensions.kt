@@ -7,6 +7,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 
 /**
  * Helper Extension Function to check the internet connection
@@ -95,4 +96,13 @@ fun View.gone(
                 })
         }
         .start()
+}
+
+
+/**
+ * Helper Extension Function to scrollView to Top of RecyclerView
+ */
+fun LinearLayoutManager.scrollToTop() {
+    //Scroll item 2 to 20 pixels from the top
+    scrollToPositionWithOffset(0, 0)
 }
