@@ -16,5 +16,6 @@ data class RepositoriesResponse(
     val name: String = "", // proton-native
     val stars: Int = 0, // 4711
     val url: String = "", // https://github.com/kusti8/proton-native
-    var isExpanded: Boolean = false //locally manage item Expending state
+    var isExpanded: Boolean = false, //locally manage item Expending state
+    var hasLanguage: Boolean = false //locally manage item LanguageWithColor state
 )

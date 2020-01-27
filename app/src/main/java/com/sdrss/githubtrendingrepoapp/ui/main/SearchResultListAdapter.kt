@@ -1,7 +1,5 @@
 package com.sdrss.githubtrendingrepoapp.ui.main
 
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -36,18 +34,6 @@ class SearchResultListAdapter :
         } else {
             holder.itemView.group.gone()
         }
-
-        if (item.languageColor != null && item.languageColor != "") item?.languageColor.let { color ->
-            val colorFinal = if (color.contains("#")) color else "#$color"
-            val fillColor = Color.parseColor(colorFinal)
-            val drawable = GradientDrawable()
-            drawable.setColor(fillColor)
-            drawable.shape = GradientDrawable.OVAL
-            holder.itemView.viewLanguageColor.background = drawable
-            holder.itemView.viewLanguageColor.visible()
-        } else {
-            holder.itemView.viewLanguageColor.gone()
-        }
     }
 
     inner class ViewHolder(itemView: View) :
@@ -61,6 +47,10 @@ class SearchResultListAdapter :
             if (adapterPosition == RecyclerView.NO_POSITION) return
 
             with(itemView.group) {
+                currentList[adapterPosition].hasLanguage =
+                    currentList[adapterPosition].language != null
+                notifyItemChanged(adapterPosition)
+
                 when (this.visibility) {
                     View.VISIBLE -> {
                         this.gone() //using extension function setVisibility
@@ -71,7 +61,6 @@ class SearchResultListAdapter :
                         currentList[adapterPosition].isExpanded = true //update the state
                     }
                 }
-
             }
         }
     }

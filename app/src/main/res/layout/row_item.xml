@@ -8,6 +8,8 @@
         <variable
             name="item"
             type="com.sdrss.githubtrendingrepoapp.data.remote.response.RepositoriesResponse" />
+
+        <import type="android.view.View" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -38,6 +40,7 @@
                 android:layout_marginTop="@dimen/_16dp"
                 android:layout_marginEnd="@dimen/_16dp"
                 android:text='@{item.author}'
+                android:visibility='@{item.author == "" ? View.GONE : View.VISIBLE}'
                 android:textColor="@color/textPrimaryColor"
                 android:textSize="@dimen/_12sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +55,7 @@
                 android:layout_marginTop="@dimen/_6dp"
                 android:layout_marginBottom="8dp"
                 android:text='@{item.name}'
+                android:visibility='@{item.name == "" ? View.GONE : View.VISIBLE}'
                 android:textColor="@color/textPrimaryColor"
                 android:textSize="@dimen/_15sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -67,33 +71,26 @@
                 android:text='@{item.description}'
                 android:textColor="@color/textPrimaryColor"
                 android:textSize="@dimen/_12sp"
+                android:visibility='@{item.description == "" ? View.GONE : View.VISIBLE}'
                 app:layout_constraintEnd_toEndOf="@+id/tvName"
                 app:layout_constraintStart_toStartOf="@+id/tvName"
                 app:layout_constraintTop_toTopOf="@+id/guideline"
                 tools:text="Description" />
 
-            <View
-                android:id="@+id/viewLanguageColor"
-                android:layout_width="@dimen/_8dp"
-                android:layout_height="@dimen/_8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvLanguage"
-                app:layout_constraintEnd_toStartOf="@+id/tvLanguage"
-                app:layout_constraintStart_toStartOf="@+id/tvName"
-                app:layout_constraintTop_toTopOf="@+id/tvLanguage" />
-
             <com.sdrss.githubtrendingrepoapp.custom.view.RobotoRegularTextView
                 android:id="@+id/tvLanguage"
+                hasLanguage='@{item.hasLanguage}'
+                language='@{item.language}'
+                languageColor='@{item.languageColor}'
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8dp"
                 android:layout_marginEnd="@dimen/_16dp"
-                android:text='@{item.language}'
                 android:textColor="@color/textPrimaryColor"
                 android:textSize="@dimen/_12sp"
-                android:visibility="gone"
+                android:visibility='@{item.language == null ? View.GONE : View.VISIBLE}'
                 app:layout_constraintBottom_toBottomOf="@+id/tvStars"
                 app:layout_constraintEnd_toStartOf="@+id/tvStars"
-                app:layout_constraintStart_toEndOf="@+id/viewLanguageColor"
+                app:layout_constraintStart_toStartOf="@+id/tvName"
                 app:layout_constraintTop_toTopOf="@+id/tvStars"
                 tools:text="Language" />
 
@@ -148,7 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                app:constraint_referenced_ids="tvStars,tvForks,tvDescription,tvLanguage,viewLanguageColor" />
+                app:constraint_referenced_ids="tvStars,tvForks,tvDescription,tvLanguage" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"

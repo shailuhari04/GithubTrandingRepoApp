@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.sdrss.githubtrendingrepoapp.R
 import com.sdrss.githubtrendingrepoapp.binding.BindingActivity
 import com.sdrss.githubtrendingrepoapp.databinding.ActivityMainBinding
 import com.sdrss.githubtrendingrepoapp.utils.isOnline
-import com.sdrss.githubtrendingrepoapp.utils.scrollToTop
 import com.sdrss.githubtrendingrepoapp.viewmodel.GithubTrendingRepoViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
@@ -72,7 +70,6 @@ class MainActivity : BindingActivity<ActivityMainBinding>() {
         //Observe Result LiveData and submitData to listAdapter
         binding.vm?.githubTrendingRepoLiveData?.observe(this, Observer { dataList ->
             binding.vm?.isLoading?.set(false)
-            (recyclerView?.layoutManager as LinearLayoutManager).scrollToTop()
             adapterSearchResult.submitList(dataList)
         })
 
