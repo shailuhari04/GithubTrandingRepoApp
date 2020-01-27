@@ -60,6 +60,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>() {
     }
 
     private fun setUpRecyclerView() {
+        recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapterSearchResult
     }
 

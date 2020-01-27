@@ -37,17 +37,15 @@ class SearchResultListAdapter :
             holder.itemView.group.gone()
         }
 
-        item?.languageColor?.let { color ->
-            if (color != "") {
-                val colorFinal = if (color.contains("#")) color else "#$color"
-                val fillColor = Color.parseColor(colorFinal)
-                val drawable = GradientDrawable()
-                drawable.setColor(fillColor)
-                drawable.shape = GradientDrawable.OVAL
-                holder.itemView.viewLanguageColor.background = drawable
-                holder.itemView.viewLanguageColor.visible()
-            }
-        } ?: run {
+        if (item.languageColor != null && item.languageColor != "") item?.languageColor.let { color ->
+            val colorFinal = if (color.contains("#")) color else "#$color"
+            val fillColor = Color.parseColor(colorFinal)
+            val drawable = GradientDrawable()
+            drawable.setColor(fillColor)
+            drawable.shape = GradientDrawable.OVAL
+            holder.itemView.viewLanguageColor.background = drawable
+            holder.itemView.viewLanguageColor.visible()
+        } else {
             holder.itemView.viewLanguageColor.gone()
         }
     }
@@ -62,8 +60,19 @@ class SearchResultListAdapter :
         override fun onClick(v: View?) {
             if (adapterPosition == RecyclerView.NO_POSITION) return
 
-            itemView.group.visible() //using extension function setVisibility
-            currentList[adapterPosition].isExpanded = true //update the state
+            with(itemView.group) {
+                when (this.visibility) {
+                    View.VISIBLE -> {
+                        this.gone() //using extension function setVisibility
+                        currentList[adapterPosition].isExpanded = false //update the state
+                    }
+                    View.GONE -> {
+                        this.visible() //using extension function setVisibility
+                        currentList[adapterPosition].isExpanded = true //update the state
+                    }
+                }
+
+            }
         }
     }
 
