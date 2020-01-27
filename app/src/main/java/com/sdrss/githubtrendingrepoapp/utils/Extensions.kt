@@ -1,13 +1,10 @@
 package com.sdrss.githubtrendingrepoapp.utils
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
 
 /**
  * Helper Extension Function to check the internet connection
@@ -38,71 +35,23 @@ fun Context.isOnline(): Boolean {
 /**
  * Helper Extension Function to set the visibility visible of view
  */
-fun View.visible(
-    duration: Int = 0,
-    delay: Int = 0,
-    listener: AnimatorListenerAdapter? = null,
-    onStop: ((Animator?) -> Unit)? = null
-) {
-    if (duration == 0 || visibility == View.VISIBLE) {
-        visibility = View.VISIBLE
-        return
-    }
-    alpha = 0f
+fun View.visible() {
     visibility = View.VISIBLE
-    animate()
-        .alpha(1f)
-        .setDuration(duration.toLong())
-        .apply {
-            if (delay > 0) startDelay = delay.toLong()
-            listener?.let { setListener(listener) }
-                ?: setListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator?) {
-                        super.onAnimationEnd(animation)
-                        alpha = 1f
-                        onStop?.invoke(animation)
-                    }
-                })
-        }
-        .start()
+    return
 }
 
+/**
+ * Helper Extension Function to set the visibility invisible of view
+ */
+fun View.invisible() {
+    visibility = View.INVISIBLE
+    return
+}
 
 /**
  * Helper Extension Function to set the visibility gone of view
  */
-fun View.gone(
-    duration: Int = 0,
-    delay: Int = 0,
-    listener: AnimatorListenerAdapter? = null,
-    onStop: ((Animator?) -> Unit)? = null
-) {
-    if (duration == 0 || visibility == View.GONE) {
-        visibility = View.GONE
-        return
-    }
-    animate()
-        .alpha(0f)
-        .setDuration(duration.toLong())
-        .apply {
-            if (delay > 0) startDelay = delay.toLong()
-            listener?.let { setListener(listener) }
-                ?: setListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator?) {
-                        super.onAnimationEnd(animation)
-                        visibility = View.GONE
-                        onStop?.invoke(animation)
-                    }
-                })
-        }
-        .start()
-}
-
-
-/**
- * Helper Extension Function to scrollView to Top of RecyclerView
- */
-fun LinearLayoutManager.scrollToTop() {
-    //Scroll item 2 to 20 pixels from the top
-    scrollToPositionWithOffset(0, 0)
+fun View.gone() {
+    visibility = View.GONE
+    return
 }
