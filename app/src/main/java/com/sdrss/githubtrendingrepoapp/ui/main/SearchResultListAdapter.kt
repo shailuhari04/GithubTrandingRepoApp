@@ -2,18 +2,13 @@ package com.sdrss.githubtrendingrepoapp.ui.main
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.sdrss.githubtrendingrepoapp.R
 import com.sdrss.githubtrendingrepoapp.binding.BindingViewHolder
 import com.sdrss.githubtrendingrepoapp.data.remote.response.RepositoriesResponse
 import com.sdrss.githubtrendingrepoapp.databinding.RowItemBinding
-import com.sdrss.githubtrendingrepoapp.utils.gone
-import com.sdrss.githubtrendingrepoapp.utils.visible
-import kotlinx.android.synthetic.main.row_item.view.*
 
 /**
  * @author SDRSS
@@ -29,41 +24,10 @@ class SearchResultListAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.binding.item = item
-        if (item.isExpanded) {
-            holder.itemView.group.visible()
-        } else {
-            holder.itemView.group.gone()
-        }
+        holder.binding.expendView = holder.binding.llMore
     }
 
-    inner class ViewHolder(itemView: View) :
-        BindingViewHolder<RowItemBinding>(itemView), OnClickListener {
-
-        init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(v: View?) {
-            if (adapterPosition == RecyclerView.NO_POSITION) return
-
-            with(itemView.group) {
-                currentList[adapterPosition].hasLanguage =
-                    currentList[adapterPosition].language != null
-                notifyItemChanged(adapterPosition)
-
-                when (this.visibility) {
-                    View.VISIBLE -> {
-                        this.gone() //using extension function setVisibility
-                        currentList[adapterPosition].isExpanded = false //update the state
-                    }
-                    View.GONE -> {
-                        this.visible() //using extension function setVisibility
-                        currentList[adapterPosition].isExpanded = true //update the state
-                    }
-                }
-            }
-        }
-    }
+    inner class ViewHolder(itemView: View) : BindingViewHolder<RowItemBinding>(itemView)
 
     private class RepoDiffUtil : DiffUtil.ItemCallback<RepositoriesResponse>() {
         override fun areItemsTheSame(

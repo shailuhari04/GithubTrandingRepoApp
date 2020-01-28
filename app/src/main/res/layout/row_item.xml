@@ -9,10 +9,16 @@
             name="item"
             type="com.sdrss.githubtrendingrepoapp.data.remote.response.RepositoriesResponse" />
 
+        <variable
+            name="expendView"
+            type="android.view.View" />
+
         <import type="android.view.View" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        childExpendView='@{expendView}'
+        itemOnClick='@{item}'
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="@dimen/_4dp">
@@ -40,9 +46,9 @@
                 android:layout_marginTop="@dimen/_16dp"
                 android:layout_marginEnd="@dimen/_16dp"
                 android:text='@{item.author}'
-                android:visibility='@{item.author == "" ? View.GONE : View.VISIBLE}'
                 android:textColor="@color/textPrimaryColor"
                 android:textSize="@dimen/_12sp"
+                android:visibility='@{item.author == "" ? View.GONE : View.VISIBLE}'
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivAvatar"
                 app:layout_constraintTop_toTopOf="parent"
@@ -55,77 +61,83 @@
                 android:layout_marginTop="@dimen/_6dp"
                 android:layout_marginBottom="8dp"
                 android:text='@{item.name}'
-                android:visibility='@{item.name == "" ? View.GONE : View.VISIBLE}'
                 android:textColor="@color/textPrimaryColor"
                 android:textSize="@dimen/_15sp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                android:visibility='@{item.name == "" ? View.GONE : View.VISIBLE}'
                 app:layout_constraintEnd_toEndOf="@+id/tvAuthor"
                 app:layout_constraintStart_toStartOf="@+id/tvAuthor"
                 app:layout_constraintTop_toBottomOf="@+id/tvAuthor"
                 tools:text="Name" />
 
-            <com.sdrss.githubtrendingrepoapp.custom.view.PingFangSCRegularTextView
-                android:id="@+id/tvDescription"
+            <LinearLayout
+                android:id="@+id/llMore"
+                setExpandedViewVisibility='@{item}'
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text='@{item.description}'
-                android:textColor="@color/textPrimaryColor"
-                android:textSize="@dimen/_12sp"
-                android:visibility='@{item.description == "" ? View.GONE : View.VISIBLE}'
+                android:layout_marginTop="@dimen/_8dp"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="@+id/tvName"
                 app:layout_constraintStart_toStartOf="@+id/tvName"
-                app:layout_constraintTop_toTopOf="@+id/guideline"
-                tools:text="Description" />
+                app:layout_constraintTop_toBottomOf="@+id/tvName">
 
-            <com.sdrss.githubtrendingrepoapp.custom.view.RobotoRegularTextView
-                android:id="@+id/tvLanguage"
-                hasLanguage='@{item.hasLanguage}'
-                language='@{item.language}'
-                languageColor='@{item.languageColor}'
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_16dp"
-                android:textColor="@color/textPrimaryColor"
-                android:textSize="@dimen/_12sp"
-                android:visibility='@{item.language == null ? View.GONE : View.VISIBLE}'
-                app:layout_constraintBottom_toBottomOf="@+id/tvStars"
-                app:layout_constraintEnd_toStartOf="@+id/tvStars"
-                app:layout_constraintStart_toStartOf="@+id/tvName"
-                app:layout_constraintTop_toTopOf="@+id/tvStars"
-                tools:text="Language" />
+                <com.sdrss.githubtrendingrepoapp.custom.view.PingFangSCRegularTextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text='@{item.description}'
+                    android:textColor="@color/textPrimaryColor"
+                    android:textSize="@dimen/_12sp"
+                    android:visibility='@{item.description == "" ? View.GONE : View.VISIBLE}'
+                    tools:text="Description" />
 
-            <com.sdrss.githubtrendingrepoapp.custom.view.RobotoRegularTextView
-                android:id="@+id/tvStars"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8dp"
-                android:layout_marginEnd="@dimen/_16dp"
-                android:layout_marginBottom="@dimen/_16dp"
-                android:drawableStart="@drawable/star_yellow_16"
-                android:drawablePadding="@dimen/_4dp"
-                android:text='@{String.valueOf(item.stars)}'
-                android:textColor="@color/textPrimaryColor"
-                android:textSize="@dimen/_12sp"
-                app:layout_constraintBottom_toTopOf="@+id/view"
-                app:layout_constraintEnd_toStartOf="@+id/tvForks"
-                app:layout_constraintStart_toEndOf="@+id/tvLanguage"
-                app:layout_constraintTop_toBottomOf="@+id/tvDescription"
-                tools:text="Stars" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:layout_marginEnd="@dimen/_16dp"
+                    android:layout_marginBottom="@dimen/_8dp"
+                    android:orientation="horizontal">
 
-            <com.sdrss.githubtrendingrepoapp.custom.view.RobotoRegularTextView
-                android:id="@+id/tvForks"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:drawableStart="@drawable/fork_black_16"
-                android:drawablePadding="@dimen/_4dp"
-                android:text='@{String.valueOf(item.forks)}'
-                android:textColor="@color/textPrimaryColor"
-                android:textSize="@dimen/_12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvStars"
-                app:layout_constraintStart_toEndOf="@+id/tvStars"
-                app:layout_constraintTop_toTopOf="@+id/tvStars"
-                tools:text="Forks" />
+                    <com.sdrss.githubtrendingrepoapp.custom.view.RobotoRegularTextView
+                        android:id="@+id/tvLanguage"
+                        language='@{item.language}'
+                        languageColor='@{item.languageColor}'
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_16dp"
+                        android:textColor="@color/textPrimaryColor"
+                        android:textSize="@dimen/_12sp"
+                        tools:text="Language" />
+
+                    <com.sdrss.githubtrendingrepoapp.custom.view.RobotoRegularTextView
+                        android:id="@+id/tvStars"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/star_yellow_16"
+                        android:drawablePadding="@dimen/_4dp"
+                        android:text='@{String.valueOf(item.stars)}'
+                        android:textColor="@color/textPrimaryColor"
+                        android:textSize="@dimen/_12sp"
+                        tools:text="Stars" />
+
+                    <com.sdrss.githubtrendingrepoapp.custom.view.RobotoRegularTextView
+                        android:id="@+id/tvForks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:drawableStart="@drawable/fork_black_16"
+                        android:drawablePadding="@dimen/_4dp"
+                        android:text='@{String.valueOf(item.forks)}'
+                        android:textColor="@color/textPrimaryColor"
+                        android:textSize="@dimen/_12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvStars"
+                        app:layout_constraintStart_toEndOf="@+id/tvStars"
+                        app:layout_constraintTop_toTopOf="@+id/tvStars"
+                        tools:text="Forks" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <View
                 android:id="@+id/view"
@@ -135,24 +147,8 @@
                 android:background="@color/dividerColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                app:constraint_referenced_ids="tvStars,tvForks,tvDescription,tvLanguage" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="67dp" />
+                app:layout_constraintTop_toBottomOf="@+id/llMore" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
