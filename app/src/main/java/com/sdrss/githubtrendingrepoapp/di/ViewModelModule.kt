@@ -1,6 +1,6 @@
 package com.sdrss.githubtrendingrepoapp.di
 
-import com.sdrss.githubtrendingrepoapp.ui.main.SearchResultListAdapter
+import com.sdrss.githubtrendingrepoapp.main.SearchResultListAdapter
 import com.sdrss.githubtrendingrepoapp.viewmodel.GithubTrendingRepoViewModel
 import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module

@@ -1,4 +1,4 @@
-package com.sdrss.githubtrendingrepoapp.ui.main
+package com.sdrss.githubtrendingrepoapp.main
 
 import android.os.Bundle
 import android.view.Menu

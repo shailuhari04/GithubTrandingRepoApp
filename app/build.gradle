@@ -46,11 +46,8 @@ dependencies {
     implementation Libs.RETROFIT
     implementation Libs.OKHTTP
     implementation Libs.OKHTTP_LOGGING_INTERCEPTOR
-
-    implementation Libs.MOSHI
-    implementation Libs.MOSHI_KOTLIN
     implementation Libs.RETROFIT_MOSHI_CONVERTER
-
+    implementation Libs.MOSHI_KOTLIN
     implementation Libs.RETROFIT_COROUTINES_ADAPTER
 
     //Kotlin
@@ -66,16 +63,12 @@ dependencies {
     implementation Libs.KOIN_CORE
     implementation Libs.KOIN_ANDROID
     implementation Libs.KOIN_VIEWMODEL
+    implementation Libs.KOIN_ARCHITECTURE
     testImplementation Libs.KOIN_SCOPE
-    testImplementation Libs.KOIN_TEST
 
     //loader
     implementation Libs.SIMMERLAYOUT
 
-    //Logging
-    implementation Libs.TIMBER
-
-    debugImplementation Libs.ANDROID_DEBUG_DATABASE //Uncomment for Android Debug Database
 
     //JVM Tests Only
     testImplementation TestLibs.JUNIT
@@ -83,10 +76,20 @@ dependencies {
 
     androidTestImplementation TestLibs.ESPRESSO_CORE
     androidTestImplementation TestLibs.ESPRESSO_CONTRIB
-    androidTestImplementation Libs.ANDROIDX_TEST_RULES
-    androidTestImplementation TestLibs.RUNNER
-    androidTestUtil TestLibs.ORCHESTRATOR
-
+    androidTestImplementation TestLibs.ANDROIDX_TEST_RUNNER
+    androidTestImplementation TestLibs.ANDROIDX_TEST_RULES
+    androidTestImplementation TestLibs.ANDROIDX_ARCH_CORE_TEST
+    androidTestImplementation TestLibs.TEST_CORE
+    androidTestImplementation TestLibs.COROUTINES_TEST
+    androidTestImplementation(TestLibs.MOCKITO) {
+        exclude group: 'org.jetbrains.kotlin'
+        exclude group: 'org.mockito'
+    }
+    androidTestImplementation TestLibs.MOCKITO_HELPER
+    androidTestImplementation(Libs.KOIN_TEST) {
+        exclude group: 'org.jetbrains.kotlin'
+        exclude group: 'org.mockito'
+    }
 }
 
 repositories {

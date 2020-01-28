@@ -1,4 +1,4 @@
-package com.sdrss.githubtrendingrepoapp.ui.main
+package com.sdrss.githubtrendingrepoapp.main
 
 import android.view.LayoutInflater
 import android.view.View
