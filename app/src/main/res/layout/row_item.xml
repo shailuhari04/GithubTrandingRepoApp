@@ -10,14 +10,14 @@
             type="com.sdrss.githubtrendingrepoapp.data.remote.response.RepositoriesResponse" />
 
         <variable
-            name="expendView"
+            name="expandView"
             type="android.view.View" />
 
         <import type="android.view.View" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        childExpendView='@{expendView}'
+        childExpendView='@{expandView}'
         itemOnClick='@{item}'
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

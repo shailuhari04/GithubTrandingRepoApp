@@ -24,7 +24,7 @@ class SearchResultListAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.binding.item = item
-        holder.binding.expendView = holder.binding.llMore
+        holder.binding.expandView = holder.binding.llMore
     }
 
     inner class ViewHolder(itemView: View) : BindingViewHolder<RowItemBinding>(itemView)
