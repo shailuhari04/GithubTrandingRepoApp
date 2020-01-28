@@ -17,7 +17,7 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        childExpendView='@{expandView}'
+        childExpandView='@{expandView}'
         itemOnClick='@{item}'
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

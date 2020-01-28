@@ -32,7 +32,7 @@ fun setExpandedViewVisibility(view: View, item: RepositoriesResponse) {
     }
 }
 
-@BindingAdapter(value = ["itemOnClick", "childExpendView"], requireAll = true)
+@BindingAdapter(value = ["itemOnClick", "childExpandView"], requireAll = true)
 fun itemOnClick(view: View, item: RepositoriesResponse, childExpendView: View) {
     view.apply {
         setOnClickListener {
